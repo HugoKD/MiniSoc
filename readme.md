@@ -1,8 +1,8 @@
 # Gestion de mini réseaux sociaux MiniSocs
 
 Binôme :
-* Prénom1 NOM1
-* Prénom2 NOM2
+* Hugo Cadet
+* Alex Aïdan
 
 ## Syntaxe MarkDown
 
@@ -42,6 +42,8 @@ d'utilisation les plus importants (code
 [source](./Diagrammes/minisocs_uml_diag_cas_utilisation.pu)).
 
 ![diagrammecasutilisation](./Diagrammes/minisocs_uml_diag_cas_utilisation.svg)
+
+ajouter diagrammes pdf 
 
 ### 1.2. Priorités, préconditions et postconditions des cas d'utilisation
 
@@ -90,6 +92,35 @@ priorité HAUTE.
 
 NB : l'opération est idempotente.
 
+#### Poster un message (HAUTE)
+- précondition : \
+∧ message bien formé (non null ∧ non vide)  \
+∧ l'user n'est pas bloqué \
+- postcondition : \
+∧ Message soumis au processus de modération suite à une notification au modérateur ∨ directement visible si l'user est lui même modérateur
+
+ 
+ 
+#### Créer un réseau social (HAUTE)
+- précondition : \
+∧ nom du réseau bien formé (non null ∧ non vide)  \
+∧ le compte existe ∧ n'est pas bloqué \
+∧ le membre qui le créé non bloqué
+- postcondition : 
+∧ Le réseau social est créé 
+∧ utilisateur promu modérateur 
+
+
+#### Ajouter une membre à un réseau social (HAUTE)
+- précondition : \
+∧ pseudo bien formé (non null ∧ non vide) \
+∧ le compte n'est pas bloqué \
+∧ le réseau existe
+∧ le membre qui ajoute à les droits (modérateur ∧ non bloqué)
+∧ choix du système de notification correct (immédiate ∨ quotidienne ∨ sans notification)
+- postcondition : membre ajouté au r.s.
+
+
 #### Autres cas d'utilisation et leur priorité respective
 
 - Retirer un utilisateur (basse)
@@ -97,6 +128,16 @@ NB : l'opération est idempotente.
 - Bloquer le compte d'un utilisateur (basse)
 
 - Lister les utilisateurs (moyenne)
+
+- Lister les réseaux sociaux (moyenne)
+
+- configurer profil (moyenne)
+
+- Promotion modérateur (moyenne)
+
+- Fermer réseau social (basse)
+
+
 
 ## 2. Préparation des tests de validation des cas d'utilisation
 

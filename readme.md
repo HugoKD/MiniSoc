@@ -96,6 +96,7 @@ NB : l'opération est idempotente.
 - précondition : \
 ∧ message bien formé (non null ∧ non vide)  \
 ∧ l'user n'est pas bloqué \
+∧ l'user fait parti du réseau \
 - postcondition : \
 ∧ Message soumis au processus de modération suite à une notification au modérateur ∨ directement visible si l'user est lui même modérateur
 
@@ -104,7 +105,7 @@ NB : l'opération est idempotente.
 #### Créer un réseau social (HAUTE)
 - précondition : \
 ∧ nom du réseau bien formé (non null ∧ non vide)  \
-∧ le compte existe ∧ n'est pas bloqué \
+∧ le compte existe ∧ \
 ∧ le membre qui le créé non bloqué
 - postcondition : 
 ∧ Le réseau social est créé 
@@ -145,7 +146,7 @@ NB : l'opération est idempotente.
 
 |                                                     | 1 | 2 | 3 | 4 | 5 | 6 |
 |:----------------------------------------------------|:--|:--|:--|---|---|---|
-| pseudo bien formé (non null ∧ non vide)              | F | T | T | T | T | T |
+| pseudo bien formé (non null ∧ non vide)             | F | T | T | T | T | T |
 | nom bien formé  (non null ∧ non vide)               |   | F | T | T | T | T |
 | prénom bien formé  (non null ∧ non vide)            |   |   | F | T | T | T |
 | courriel bien formé (respectant le standard RFC822) |   |   |   | F | T | T |
@@ -165,13 +166,57 @@ conditions.
 
 |                                          | 1 | 2 | 3 | 4 |
 |:-----------------------------------------|:--|:--|:--|:--|
-| pseudo bien formé (non null ∧ non vide)   | F | T | T | T |
+| pseudo bien formé (non null ∧ non vide)  | F | T | T | T |
 | le compte n'est pas bloqué               |   | F | T | T |
 | utilisateur avec ce pseudo existant      |   |   | F | T |
 |                                          |   |   |   |   |
 | le compte de l'utilisateur est désactivé | F | F | F | T |
 |                                          |   |   |   |   |
 | nombre de tests dans le jeu de tests     | 2 | 1 | 1 | 1 |
+
+
+#### Créer un réseau social (HAUTE)
+
+|                                                     | 1 | 2 | 3 | 4 | 5 |
+|:----------------------------------------------------|:--|:--|:--|---|---|
+| nom du réseau bien formé (non null ∧ non vide)      | F | T | T | T | T |
+| le compte existe                                    |   | F | T | T | T |
+| le membre qui le créé non bloqué                    |   |   | F | T | T |
+|                                                     |   |   |   |   |   |
+| Réseau créé                                         | F | F | F | F | T |
+| User promu modérateur                               | F | F | F | F | T |
+|                                                     |   |   |   |   |   |
+| nombre de tests dans le jeu de tests                | 2 | 1 | 1 | 1 | 1 |
+
+
+#### Poster un message (HAUTE)
+
+|                                                     | 1 | 2 | 3 | 4 | 5 |
+|:----------------------------------------------------|:--|:--|:--|---|---|
+| Message bien formé (respectant le standard RFC822)  | F | T | T | T | T |
+| L’user n’est pas bloqué                             |   | F | T | T | T |
+| L'user fait parti du réseau                         |   |   | F | T | T |
+|                                                     |   |   |   |   |   |
+| Message soumis au processus de modération suite à   |   |   |   |   |   |
+| une notification au modérateur ∨                    | F | F | F | F | T |
+| directement visible si l'user est                   |   |   |   |   |   |
+| lui même modérateur                                 |   |   |   |   |   |
+|                                                     |   |   |   |   |   |
+| nombre de tests dans le jeu de tests                | 1 | 1 | 1 | 1 | 1 |
+
+#### Ajouter un membre à un réseau social (HAUTE)
+
+|                                                     | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|:----------------------------------------------------|:--|:--|:--|---|---|---|---|
+| pseudo bien formé (non null ∧ non vide)             | F | T | T | T | T | T | T |
+| le compte n'est pas bloqué                          |   | F | T | T | T | T | T |
+| le réseau existe                                    |   |   | F | T | T | T | T |
+| le membre qui ajoute à les droits                   |   |   |   | F | T | T | T |
+| choix du système de notification correct            |   |   |   |   | F | T | T |
+|                                                     |   |   |   |   |   | F | T |
+| membre ajouté au r.s                                | F | F | F | F | F | T | T |
+|                                                     |   |   |   |   |   |   |   |
+| nombre de tests dans le jeu de tests                | 2 | 2 | 2 | 1 | 1 | 1 | 1 |
 
 # 3. Conception
 

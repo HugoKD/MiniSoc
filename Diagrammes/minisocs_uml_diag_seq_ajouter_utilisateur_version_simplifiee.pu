@@ -4,11 +4,16 @@
 
 'Version simplifiée (voir ...[_version_simplifiée].pu pour une version plus détaillée'
 
+'Configuration charte graphique'
 hide footbox
 skinparam sequenceParticipantBackgroundColor White
 skinparam sequenceActorBackgroundColor White
+
+'Déclaration des acteurs et des participants (déjà existants avant la séquence)'
 actor "__:Administrateur__" as admin
 participant "__m:MiniSocs__" as m
+
+'Séquence avec les messages, les créations de participants, etc.'
 admin -> m : ajouterUtilisateur(pseudo, nom, prénom, courriel)
 opt pseudo, nom, prénom, courriel non null ∧ non vide
   m -> m : u=chercherUtilisateur(pseudo): Utilisateur

@@ -14,3 +14,13 @@ exposer votre point de vue.
 - [x] Action (réalisée)
     - RÉPONSE et éventuelles remarques de votre part, 
 
+ 
+---
+# Suivi du ven. 09 févr. 2024 19:05:41
+Chantal Taconet
+ 
+ 
+---
+# Suivi du mar. 13 févr. 2024 14:07:37
+Chantal Taconet
+ 

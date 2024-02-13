@@ -14,13 +14,8 @@ exposer votre point de vue.
 - [x] Action (réalisée)
     - RÉPONSE et éventuelles remarques de votre part, 
 
- 
----
-# Suivi du ven. 09 févr. 2024 19:05:41
-Chantal Taconet
- 
- 
----
+ ---
 # Suivi du mar. 13 févr. 2024 14:07:37
 Chantal Taconet
- 
+
+Les fichiers auxquels j'ai accès dans la branche develop n'ont pas été modifié  depuis le fork initial ... cela ne me permet pas de faire le suivi ... 

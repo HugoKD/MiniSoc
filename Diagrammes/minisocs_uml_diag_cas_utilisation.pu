@@ -17,6 +17,7 @@ actor Administrateur
 actor Utilisateur
 actor Modérateur
 Utilisateur <|-- Administrateur
+Modérateur <|-- Administrateur
 Utilisateur <|-- Modérateur
 
 'Déclaration des cas d'utilisation dans le système'

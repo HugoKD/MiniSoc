@@ -376,5 +376,36 @@ enfin une chaîne de caractères qui n'est pas une adresse courriel.
 
 Deux tests dans le jeu de tests 2 pour l'idempotence.
 
+## 8.2. Opérations de la classe Message
+
+### Opération constructeur
+
+|                                              | 1   | 2   | 3   | 4   | 5   |
+|:---------------------------------------------|:----|:----|:----|:----|:----|
+| Contenu bien formé (non vide)                |  F  |  T  | T   | T   | T   |
+| Date publication bien formée (non vide)      |     |  F  | T   | T   | T   |
+| Statut bien défini (non vide)                |     |     | F   | T   | T   |
+|                                              |     |     |     |     |     |
+| contenu' = contenu                           | F   | F   | F   | F   | T   |
+| datePublication' = datePublication           | F   | F   | F   | F   | T   |
+| statu' = statu                               | F   | F   | F   | F   | T   |
+|                                              |     |     |     |     |     |
+| levée d'un exception                         | oui | oui | oui | non | non |
+|                                              |     |     |     |     |     |
+| nombre de tests dans le jeu de tests         | 1   | 2   | 2   | 1   | 1   |
+
+### Opération moderer()
+
+|                                                 | 1   | 2   |
+|:------------------------------------------------|:----|:----|
+| statut intial du message (message modéré ou non)| F   | T   |
+|                                                 |     |     |
+| staut après la modération                       | F   | T   |
+|                                                 |     |     |
+| levée d'une exception (si nécessaure)           | oui | non |
+|                                                 |     |     |
+| nombre de tests dans le jeu de tests            | 1   | 1   |
+
+
 ---
 FIN DU DOCUMENT

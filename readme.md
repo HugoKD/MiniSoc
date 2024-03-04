@@ -335,7 +335,7 @@ Voici tous les attributs de la classe :
 ∧ EmailValidator.getInstance().isValid(courriel)
 ∧ etatCompte != null
 ```
-
+EtatMessage = EnAttente V valide V non valide 
 # 8 Préparation des tests unitaires
 
 ## 8.1. Opérations de la classe Utilisateur

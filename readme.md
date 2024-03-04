@@ -175,7 +175,6 @@ Version sans les notifications
 ([source](./Diagrammes/minisocs_uml_diag_classes_sans_notif.pu)).
 
 ![diagrammeclasses](./Diagrammes/minisocs_uml_diag_classes_sans_notif.svg)
-([source](./Diagrammes/minisocs_uml_diag_classes_sans_notif.pu))
 
 ## 3.4. Diagrammes de séquence
 
@@ -193,15 +192,11 @@ Version recommandée
 ([source](./Diagrammes/minisocs_uml_diag_seq_ajouter_utilisateur.pu)).
 
 ![diagrammeséquenceajouterutilisateur](./Diagrammes/minisocs_uml_diag_seq_ajouter_utilisateur.svg)
-([source](./Diagrammes/minisocs_uml_diag_seq_ajouter_utilisateur.pu))
 
 Version simplifiée
 ([source](./Diagrammes/minisocs_uml_diag_seq_ajouter_utilisateur_version_simplifiee.pu)).
 
-
-
 ![diagrammeséquenceajouterutilisateursimplifié](./Diagrammes/minisocs_uml_diag_seq_ajouter_utilisateur_version_simplifiee.svg)
-([source](./Diagrammes/minisocs_uml_diag_seq_ajouter_utilisateur_version_simplifiee.pu))
 
 # 7. Diagrammes de machine à états et invariants
 
@@ -233,7 +228,6 @@ qu'étant déclenchés par un autre objet).
 Diagramme ([source](./Diagrammes/minisocs_uml_diag_machine_a_etats_utilisateur.pu)).
 
 ![diagrammemachineaétatsutilisateur](./Diagrammes/minisocs_uml_diag_machine_a_etats_utilisateur.svg)
-([source](./Diagrammes/minisocs_uml_diag_machine_a_etats_utilisateur.pu))
 
 ### 7.1.2. Fiche de la classe
 

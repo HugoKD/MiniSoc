@@ -9,6 +9,7 @@ skinparam class {
   BackgroundColor White
   ArrowColor Black
   BorderColor Black
+  AttributeIconSize 0
 }
 
 'Classes, énumérations, etc.'

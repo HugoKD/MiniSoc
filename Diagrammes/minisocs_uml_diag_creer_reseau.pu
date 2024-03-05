@@ -1,0 +1,31 @@
+@startuml
+
+'Diagramme de séquence (PlantUML)'
+
+'Configuration charte graphique'
+hide footbox
+skinparam sequenceParticipantBackgroundColor White
+skinparam sequenceActorBackgroundColor White
+
+'Déclaration des acteurs et des participants (déjà existants avant la séquence)'
+actor "__Utilisateur__" as user
+participant "__m:MiniSocs__" as m
+participant "__u:Utilisateur__" as u
+
+'Séquene avec les messages, les créations de participants, etc.'
+user -> m ++ : creerReseau(nomRS, pseudoU)
+opt nomRS non null ∧ non vide && pseudoU non null ∧ non vide
+	m-> m++ : e1=rechercheReseau(nomRS)
+	m -> m ++ : e2=rechercheUtilisateur(pseudoU)
+	opt e1 != null && e2 == null
+		m -> u ++ : b=utilisateurBloque(nomU)
+		opt b==False
+    		create "<<new>>\n__rs:Reseau__" as rs
+    		u -> "__rs:Reseau__" as rs ++ : rs=<<create(nomRs)>>
+    		create  "<<new>>\n__me:Membre__" as me
+    		u -> "__me:Membre__" as me ++ : me=<<ajouteMembre(pseudoU)>>
+    		me -> me ++ : donnerDroit(nomRs,pseudoU)
+  end
+end
+return
+@enduml

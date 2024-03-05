@@ -27,9 +27,30 @@ enum ÉtatCompte <<enum>> {
   DÉSACTIVÉ
   BLOQUÉ
 }
+class Reseau {
+  nom: String
+  ouvert: Bool
+}
+class Membre {
+  moderateur: Bool
+  pseudo_rs: String
+}
+class Message {
+  contenu: String
+  visible: Bool
+
+}
 
 'Associations, etc.'
 MiniSocs *--> "*" Utilisateur
+MiniSocs *--> "*" Reseau
+MiniSocs *--> "*" Membre
+MiniSocs *--> "*" Message
+
+Membre "0..1" --> Reseau: faitParti >
+Membre "*" --> Utilisateur: faitParti >
+Message "0..1" --> Reseau: poster >
+Message "*" --> Utilisateur: poster >
 
 'Au besoin, aides pour le positionnement'
 

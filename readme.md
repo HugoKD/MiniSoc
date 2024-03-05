@@ -284,6 +284,16 @@ Version simplifiée
 
 ![diagrammeséquenceajouterutilisateursimplifié](./Diagrammes/minisocs_uml_diag_seq_ajouter_utilisateur_version_simplifiee.svg)
 
+###Créer un nouveau réseau
+([source](./Diagrammes/minisocs_uml_creer_reseau.pu)).
+
+![diagrammeséquenceajouterutilisateursimplifié](./Diagrammes/minisocs_uml_creer_reseau.svg)
+
+###Poster un message
+([source](./Diagrammes/minisocs_uml_poster_mess.pu)).
+
+![diagrammeséquenceajouterutilisateursimplifié](./Diagrammes/minisocs_uml_poster_mess².svg)
+
 # 7. Diagrammes de machine à états et invariants
 
 Dans les diagrammes de machine à états, nous faisons le choix de faire

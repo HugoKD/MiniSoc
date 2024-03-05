@@ -1,0 +1,34 @@
+@startuml
+
+'Diagramme de séquence (PlantUML)'
+
+'Configuration charte graphique'
+hide footbox
+skinparam sequenceParticipantBackgroundColor White
+skinparam sequenceActorBackgroundColor White
+
+'Déclaration des acteurs et des participants (déjà existants avant la séquence)'
+actor "__Utilisateur__" as user
+participant "__m:MiniSocs__" as m
+participant "__rs:Reseau__" as rs
+participant "__me:Membre__" as me
+participant "__u:Utilisateur__" as u
+
+'Séquence avec les messages, les créations de participants, etc.'
+user -> m ++ : posterMessage(pseudoM, rs, mess)
+opt pseudoM, rs, mess non null ∧ non vide
+  m -> m ++ : e1=existenceReseau(rs)
+  opt e1 != null
+    m -> rs ++ : e2=existenceMembre(pseudoM, rs)
+    opt e2 == True
+      rs -> me ++ : pseudoU=pseudoUtilisateur(pseudoM)
+      me -> me ++ : mod=estModerateur(pseudoU)
+      me -> u ++ : b1=estBloque(pseudoU)
+      opt b1 == False
+        create "<<new>>\n__mes:Message__" as mess
+        u -> "__mes:Message__" as mess ++ : mess=<<create(mess)>>
+        opt mod == True
+          mess -> mess ++ : rendreVisible(mess)
+     
+end
+@enduml

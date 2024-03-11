@@ -13,19 +13,20 @@ participant "__m:MiniSocs__" as m
 participant "__u:Utilisateur__" as u
 
 'Séquene avec les messages, les créations de participants, etc.'
-user -> m ++ : creerReseau(nomRS, pseudoU)
-opt nomRS non null ∧ non vide && pseudoU non null ∧ non vide
+user -> m ++ : creerReseau(nomRS, pseudoU, pseudo M)
+opt nomRS,pseudoU,pseudoM non null ∧ non vide
 	m-> m++ : e1=rechercheReseau(nomRS)
-	m -> m ++ : e2=rechercheUtilisateur(pseudoU)
-	opt e1 != null && e2 == null
-		m -> u ++ : b=utilisateurBloque(nomU)
+	m -> m ++ : u=rechercheUtilisateur(pseudoU)
+	opt e1 == null && u != null
+		m -> u ++ : b=estBloque()
+		return
 		opt b==False
     		create "<<new>>\n__rs:Reseau__" as rs
-    		u -> "__rs:Reseau__" as rs ++ : rs=<<create(nomRs)>>
+    		m -> "__rs:Reseau__" as rs ++ : rs=<<create(nomRs, pseudoM)>>
     		create  "<<new>>\n__me:Membre__" as me
-    		u -> "__me:Membre__" as me ++ : me=<<ajouteMembre(pseudoU)>>
-    		me -> me ++ : donnerDroit(nomRs,pseudoU)
+    		rs -> "__me:Membre__" as me ++ : me=<<ajouteMembre(pseudoM)>>
+    		me -> me ++ : donnerDroit()
   end
 end
-return
+
 @enduml

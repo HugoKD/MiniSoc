@@ -15,20 +15,22 @@ participant "__me:Membre__" as me
 participant "__u:Utilisateur__" as u
 
 'Séquence avec les messages, les créations de participants, etc.'
-user -> m ++ : posterMessage(pseudoM, rs, mess)
+user -> m ++ : posterMessage(pseudoM, nomRs, mess)
 opt pseudoM, rs, mess non null ∧ non vide
-  m -> m ++ : e1=existenceReseau(rs)
-  opt e1 != null
-    m -> rs ++ : e2=existenceMembre(pseudoM, rs)
-    opt e2 == True
-      rs -> me ++ : pseudoU=pseudoUtilisateur(pseudoM)
-      me -> me ++ : mod=estModerateur(pseudoU)
-      me -> u ++ : b1=estBloque(pseudoU)
-      opt b1 == False
-        create "<<new>>\n__mes:Message__" as mess
-        u -> "__mes:Message__" as mess ++ : mess=<<create(mess)>>
+  m -> m ++ : rs=rechercheReseau(rs)
+  opt rs != null
+    m -> rs ++ : posterMessage(pseudoM,mess)
+    rs -> rs++ : me=rechercheMembre(pseudoM)
+    opt me != null 
+    	rs->me++ : u=rechercheUtilisateur(pseudoM)
+    	me -> me ++ : mod=estModerateur()
+    	me->u++ : b=estBloque()
+    	return
+    	opt b == False
+        	create "<<new>>\n__mes:Message__" as mess
+        	me -> "__mes:Message__" as mess ++ : mess=<<create(mess)>>
         opt mod == True
-          mess -> mess ++ : rendreVisible(mess)
-     
+          mess -> mess ++ : rendreVisible()
+      	   
 end
 @enduml

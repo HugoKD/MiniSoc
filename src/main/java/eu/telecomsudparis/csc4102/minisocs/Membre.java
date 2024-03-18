@@ -12,8 +12,10 @@ import org.apache.commons.validator.routines.EmailValidator;
 public class Membre {
 	private String pseudo ; 
 	private boolean moderateur ;
+	private boolean bloque ;
 	private final Reseau reseau;
 	private final Utilisateur utilisateur ;
+	
 	
 	public Membre(String pseudo,Reseau reseau, Utilisateur utilisateur) {
         if (pseudo == null || pseudo.isBlank()) {
@@ -25,7 +27,8 @@ public class Membre {
         this.pseudo = pseudo;
         this.reseau = reseau;
         this.utilisateur = utilisateur ; 
-        this.moderateur = false;        
+        this.moderateur = false;  
+        this.bloque = false ;
 	}
 	
 	public String getPseudo() {
@@ -46,6 +49,10 @@ public class Membre {
 	
 	public void retirerDroits() {
 		moderateur = false;
+	}
+	
+	public String isBloque() {
+		return utilisateur.getEtatCompte().toString();
 	}
 	
 	 @Override

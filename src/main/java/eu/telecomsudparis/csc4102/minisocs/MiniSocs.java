@@ -21,7 +21,7 @@ public class MiniSocs {
 	/**
 	 * les utilisateurs.
 	 */
-	private final Map<String, Utilisateur> utilisateurs;
+	private final Map<String, Utilisateur> utilisateurs; /**permet de stocker sous forme clé-valeur**/
 
 	/**
 	 * construit une instance du système.

@@ -39,19 +39,18 @@ class Membre {
 class Message {
   contenu: String
   visible: Bool
-
 }
 
 'Associations, etc.'
-MiniSocs *--> "*" Utilisateur
-MiniSocs *--> "*" Reseau
-MiniSocs *--> "*" Membre
-MiniSocs *--> "*" Message
+MiniSocs "1" *--> "0..*" Utilisateur : possède
+MiniSocs "0..*" *--> "1" Réseau : possède
 
-Membre "0..1" --> Reseau: faitParti >
-Membre "*" --> Utilisateur: faitParti >
-Message "0..1" --> Reseau: poster >
-Message "*" --> Utilisateur: poster >
+Réseau "1..*" -- "1..*" Membre: possède
+
+Membre "1" -- "0..*" Message: poste
+
+Utilisateur "1" -- "0..*" Réseau: Créé
+Utilisateur "1" *--> "0..*" Membre: représente
 
 'Au besoin, aides pour le positionnement'
 

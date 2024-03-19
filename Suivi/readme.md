@@ -131,3 +131,41 @@ Manque des données en entrée
 2. Table de décision des tests unitaires de la méthode Message::modérer
 
 - [] A faire 
+ 
+---
+# Suivi du mar. 19 mars 2024 16:08:38
+Chantal Taconet
+
+Travail en cours ... mais en retard pour ce qui est évalué dans le suivi 3, il m'est difficile de vous faire des retours, vous est-il possible d'avancer prochainement ? 
+
+- [] GEN-03-Images-PlantUML-non-mises-à-jour
+  - vos diagrammes de séquences sont semble-til maj mais ils ne sont pas insérés dans votre readme.md, je ne peux pas vous faire de retour ...
+- [] GEN-01-Indiquer-remarque-prise-en-compte
+  - Veuillez indiquer lorsque vous avez pris en compte les remarques en mettant un « x » dans la case à cocher, comme indiqué en début de fichier
+  
+## Programmation du logiciel
+
+### Utilisation des outils de programmation
+
+1. Module Maven et tests avec JUnit
+- maven OK 
+- Junit il semble que vous n'ayez pas encore ajouté de tests 
+
+### Programmation de la solution
+
+#### Classes du diagramme de classes avec leurs attributs
+
+- Un bon début
+
+#### Méthodes des cas d'utilisation de base
+
+- pas encore programmés
+
+#### Cohérence entre le code et le modèle
+
+- A vérifier quand les premiers cas d'utilisation seront réalisés
+
+
+## Programmation et exécution des tests
+
+- pas encore programmés

@@ -22,6 +22,10 @@ public class MiniSocs {
 	 * les utilisateurs.
 	 */
 	private final Map<String, Utilisateur> utilisateurs; /**permet de stocker sous forme clé-valeur**/
+	/**
+	 * les réseaux.
+	 */
+	private final Map<String, Reseau> reseaux; /**permet de stocker sous forme clé-valeur**/
 
 	/**
 	 * construit une instance du système.
@@ -31,6 +35,7 @@ public class MiniSocs {
 	public MiniSocs(final String nomDuSysteme) {
 		this.nomDuSysteme = nomDuSysteme;
 		this.utilisateurs = new HashMap<>();
+		this.reseaux = new HashMap<>();
 	}
 
 	/**
@@ -84,6 +89,11 @@ public class MiniSocs {
 	public List<String> listerUtilisateurs() {
 		return utilisateurs.values().stream().map(Utilisateur::toString).toList();
 	}
+	
+	public List<String> listerReseaux() {
+		return reseaux.values().stream().map(Reseau::getNomRs).toList();
+	}
+	
 
 	/**
 	 * désactiver son compte utilisateur.
@@ -119,4 +129,24 @@ public class MiniSocs {
 	public String toString() {
 		return "MiniSocs [nomDuSysteme=" + nomDuSysteme + ", utilisateurs=" + utilisateurs + "]";
 	}
+	
+	public void creerReseau(final String nomRs, final String pseudoM, final String pseudoU)
+			throws OperationImpossible {
+		if (pseudoM == null || pseudoM.isBlank()) {
+			throw new OperationImpossible("pseudoM ne peut pas être null ou vide");
+		}
+		if (pseudoU == null || pseudoU.isBlank()) {
+			throw new OperationImpossible("pseudoU ne peut pas être null ou vide");
+		}
+		if (nomRs == null || nomRs.isBlank()) {
+			throw new OperationImpossible("nomRs ne peut pas être null ou vide");
+		}
+		Utilisateur u = utilisateurs.get(pseudoU);
+		Reseau rs = reseaux.get(nomRs);
+		if (rs != null) {
+			throw new OperationImpossible(nomRs + "déjà un réseau");
+		}
+		reseaux.put(nomRs, new Reseau(nomRs, u, pseudoM));
+	}
+	
 }

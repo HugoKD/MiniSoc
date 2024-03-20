@@ -4,9 +4,11 @@ import java.util.Objects;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
+import eu.telecomsudparis.csc4102.util.OperationImpossible;
+
 /**
  * Cette classe réalise le concept d'utilisateur du système, à ne pas confondre
- * avec le concept de participant, sous-entendu à un réséeau social.
+ * avec le concept de membre, sous-entendu à un réséeau social.
  * 
  * @author Denis Conan
  */
@@ -135,4 +137,7 @@ public class Utilisateur {
 		return "Utilisateur [pseudonyme=" + pseudonyme + ", nom=" + nom + ", prenom=" + prenom + ", courriel="
 				+ courriel + ", etatCompte=" + etatCompte + "]";
 	}
+	
+	
+
 }

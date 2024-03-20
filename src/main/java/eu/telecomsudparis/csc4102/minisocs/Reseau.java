@@ -3,6 +3,8 @@ package eu.telecomsudparis.csc4102.minisocs;
 import java.util.HashMap;
 import java.util.Map;
 
+import eu.telecomsudparis.csc4102.util.OperationImpossible;
+
 public class Reseau {
 		/** Doit on ajouter celui qui a créer le réseau -> on le met directe admin ...**/
 		/** c'est un utilisateur qui créer le réseau cf diagramme de classe **/
@@ -10,7 +12,7 @@ public class Reseau {
 	private final String nomDuReseau;
 	private Map<String, Membre> membres;
 	
-	public Reseau(final String nomDuReseau, final Utilisateur createur) throws IllegalArgumentException {
+	public Reseau(final String nomDuReseau, final Utilisateur createur,final String pseudoM) throws IllegalArgumentException {
         // Vérification du nom du réseau
         if (nomDuReseau == null || nomDuReseau.isBlank()) {
             throw new IllegalArgumentException("Le nom du réseau doit être non null et non vide");
@@ -27,10 +29,21 @@ public class Reseau {
         this.nomDuReseau = nomDuReseau;
         this.createur = createur;
         this.membres = new HashMap<>(); /** clef/valeur**/
+        membres.put(createur.getPseudonyme(), new Membre(pseudoM, this, createur));
     }
 	
 	public Utilisateur getCreateur() {
         return createur;
     }
-
+	
+	public String getNomRs() {
+        return nomDuReseau;
+    }
+	
+	public String toString() {
+		return "Reseau [nomDuReseau=" + nomDuReseau + ", createur=" + createur + "]";
+	}
+	
+	
+	
 }

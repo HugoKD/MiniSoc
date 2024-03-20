@@ -32,7 +32,7 @@ Le travail est à compléter sans trop tarder.
 Les diagrammes de séquence sont à revoir. 
 Bonne continuation ! 
 
-* [] GIT-06-Répartition-travail-sur-dépôt
+* [x] GIT-06-Répartition-travail-sur-dépôt
     * Nous attendons que les deux membres du binôme soient à l'aise
       avec Git et nous encourageons chaque membre à faire des mises à
       jour sur le dépôt (`commit`/`push`).
@@ -67,14 +67,14 @@ Manque des données en entrée
       "adresseDeLivraison" et "adresseDeFacturation".
       - [] Manque des noms d'associations
 
-- [] Est-ce l'utilisateur ou le membre qui est associé avec un  message
+- [x] Est-ce l'utilisateur ou le membre qui est associé avec un  message -> c'est le membre
 
 
 ### Diagrammes de séquence
 
 1. Cas d'utilisation « créer un réseau social »
-- [] u==true --> u != null 
-* [] DIAGSEQ-16-Message-pb-cohérence-nom-participant-objet-trouvé
+- [x] u==true --> u != null 
+* [x] DIAGSEQ-16-Message-pb-cohérence-nom-participant-objet-trouvé
     * Un ou plusieurs objets cherchés et trouvés dans la séquence
       semblent utilisés par la suite dans la séquence. Si ce sont bien
       les mêmes objets trouvés qui sont utilisés, le nom de la
@@ -82,12 +82,12 @@ Manque des données en entrée
       par le message « d = chercherDocument(code) : Document ») doit
       être le nom du participant utilisé par la suite, ici « d ».
       * par exemple le réseau social s'appelle rs dans la suite du diagramme de classes 
-* [] DIAGSEQ-18-Message-pb-arguments
+* [x] DIAGSEQ-18-Message-pb-arguments
     * Un ou plusieurs arguments d'un message ne sont pas corrects.
 	  * create(nomRs) d'où vient nomRs pb 
 
 	  
-- [] 
+- [x] 
 
 2. Cas d'utilisation « ajouter un membre à un réseau social »
 
@@ -95,7 +95,7 @@ Manque des données en entrée
 
 3. Cas d'utilisation « poster un message »
 
-- [] manque les fragments optionnels, le teste des préconditions, à vérifier ... 
+- [x] manque les fragments optionnels, le teste des préconditions, à vérifier ... 
 
 - [] 
 
@@ -113,6 +113,7 @@ Manque des données en entrée
       erreur de compréhension de l'étude de cas.
       * Message caché ?? 
 	  * Un message refusé est-il détruit ? 
+    -REPONSE : oui
 * [] DIAGMACHETATS-07-Transition-pb-syntaxe-événement-condition-action
     * Une ou plusieurs transitions ne respectent pas la
       syntaxe : `événement[condition]/action`.
@@ -140,7 +141,7 @@ Travail en cours ... mais en retard pour ce qui est évalué dans le suivi 3, il
 
 - [] GEN-03-Images-PlantUML-non-mises-à-jour
   - vos diagrammes de séquences sont semble-til maj mais ils ne sont pas insérés dans votre readme.md, je ne peux pas vous faire de retour ...
-- [] GEN-01-Indiquer-remarque-prise-en-compte
+- [x] GEN-01-Indiquer-remarque-prise-en-compte
   - Veuillez indiquer lorsque vous avez pris en compte les remarques en mettant un « x » dans la case à cocher, comme indiqué en début de fichier
   
 ## Programmation du logiciel

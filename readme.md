@@ -284,15 +284,16 @@ Version simplifiée
 
 ![diagrammeséquenceajouterutilisateursimplifié](./Diagrammes/minisocs_uml_diag_seq_ajouter_utilisateur_version_simplifiee.svg)
 
-###Créer un nouveau réseau
-([source](./Diagrammes/minisocs_uml_creer_reseau.pu)).
+#### Créer un nouveau réseau
+([source](./Diagrammes/minisocs_uml_diag_creer_reseau.pu)).
 
-![diagrammeséquenceajouterutilisateursimplifié](./Diagrammes/minisocs_uml_creer_reseau.svg)
+![diagrammeséquenceajouterutilisateursimplifié](./Diagrammes/minisocs_uml_diag_creer_reseau.svg)
 
-###Poster un message
-([source](./Diagrammes/minisocs_uml_poster_mess.pu)).
+#### Poster un message
+([source](./Diagrammes/minisocs_uml_diag_poster_mess.pu)).
 
-![diagrammeséquenceajouterutilisateursimplifié](./Diagrammes/minisocs_uml_poster_mess².svg)
+![diagrammeséquenceajouterutilisateursimplifié](./Diagrammes/minisocs_uml_diag_poster_mess.svg
+)
 
 # 7. Diagrammes de machine à états et invariants
 

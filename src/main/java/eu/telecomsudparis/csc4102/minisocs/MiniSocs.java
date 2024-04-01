@@ -105,7 +105,8 @@ public class MiniSocs {
 		if (pseudo == null || pseudo.isBlank()) {
 			throw new OperationImpossible("pseudo ne peut pas être null ou vide");
 		}
-		Utilisateur u = utilisateurs.get(pseudo);
+		Utilisateur u = utilisateurs.get(pseudo); /*obtenir un objet utilisateur en partant d'un pseudo grace a la map utilisateurs
+		-> pseudoU est unique !*/
 		if (u == null) {
 			throw new OperationImpossible("utilisateur inexistant avec ce pseudo (" + pseudo + ")");
 		}
@@ -130,7 +131,9 @@ public class MiniSocs {
 		return "MiniSocs [nomDuSysteme=" + nomDuSysteme + ", utilisateurs=" + utilisateurs + "]";
 	}
 	
-	public void creerReseau(final String nomRs, final String pseudoM, final String pseudoU)
+	public void creerReseau(final String nomRs, final String pseudoM, final String pseudoU) /*celui qui créer un réseau est 
+	automatiquement mis modérateur ! Donc dès que l'on créer un réseau on demande un pseudo*/
+	
 			throws OperationImpossible {
 		if (pseudoM == null || pseudoM.isBlank()) {
 			throw new OperationImpossible("pseudoM ne peut pas être null ou vide");

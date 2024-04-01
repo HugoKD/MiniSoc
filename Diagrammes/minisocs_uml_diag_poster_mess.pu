@@ -24,9 +24,10 @@ opt pseudoM, rs, mess non null ∧ non vide
       rs -> me ++ : pseudoU=pseudoUtilisateur(pseudoM)
       me -> me ++ : mod=estModerateur(pseudoU)
       me -> u ++ : b1=estBloque(pseudoU)
+      u --> me ++ : b1
       opt b1 == False
         create "<<new>>\n__mes:Message__" as mess
-        u -> "__mes:Message__" as mess ++ : mess=<<create(mess)>>
+        me -> "__mes:Message__" as mess ++ : mess=<<create(mess)>>
         opt mod == True
           mess -> mess ++ : rendreVisible(mess)
 	end

@@ -9,7 +9,6 @@ package eu.telecomsudparis.csc4102.minisocs;
 public class Message {
   
     private final String contenu;
-
     private Membre auteur; 
     /** c est un membre qui publie un message, non un utilisateur, meme si un membre est un utilisateur**/
 

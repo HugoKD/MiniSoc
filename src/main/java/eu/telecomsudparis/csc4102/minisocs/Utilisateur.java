@@ -33,6 +33,7 @@ public class Utilisateur {
 	 * état du compte de l'utilisateur.
 	 */
 	private EtatCompte etatCompte;
+	
 
 	/**
 	 * construit un utilisateur.

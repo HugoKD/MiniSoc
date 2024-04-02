@@ -9,7 +9,10 @@ package eu.telecomsudparis.csc4102.minisocs;
 public class Message {
   
     private final String contenu;
+
     private Membre auteur; 
+    
+    private Reseau reseau;
     /** c est un membre qui publie un message, non un utilisateur, meme si un membre est un utilisateur**/
 
     /**
@@ -19,7 +22,7 @@ public class Message {
      * @param auteur  L'auteur du message.
      */
     
-    public Message(final String contenu, final Membre auteur) {
+    public Message(final String contenu, final Membre auteur, final Reseau reseau) {
         if (contenu == null || contenu.isBlank()) {
             throw new IllegalArgumentException("Le contenu ne peut pas être null ou vide");
         }
@@ -29,8 +32,12 @@ public class Message {
         if (auteur.isBloque() == "bloqué") {
         	throw new IllegalArgumentException("L'auteur est bloqué et ne peut pas publier de message");
         }
+        if (reseau == null) {
+            throw new IllegalArgumentException("Le reseau doit exister");
+        }
         this.contenu = contenu;
         this.auteur = auteur;
+        this.reseau = reseau ; 
         assert invariant();
     }
 

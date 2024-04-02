@@ -170,3 +170,68 @@ Travail en cours ... mais en retard pour ce qui est évalué dans le suivi 3, il
 ## Programmation et exécution des tests
 
 - pas encore programmés
+ 
+---
+# Suivi du mar. 02 avril 2024 13:26:40
+Chantal Taconet
+ 
+De bonnes choses et d'autres à compléter. Voir les remarques ci-dessous. Bonne continuation. 
+
+## Cohérence entre le code et le modèle
+
+1. Préconditions, postconditions et diagrammes de séquence
+
+- [] creerReseauSocial manque préconditions non null et non vide, manque précondition réseau non existant 
+- [] posterMessage manque préconditions non null et non vide et d'autres préconditions mentionnées dans votre table de décision
+
+2. Diagrammes de classes et de séquence
+
+- [] Attention c'est le réseau qui crée le membre et non l'utilisateur comme mentionné dans le diagramme de classes 
+
+
+3. Diagrammes de classes et code
+
+- [] Membre --> Utilisateur existe dans le code mais pas dans le DC 
+- [] Membre --> Message existe dans le DC mais pas dans le code
+
+
+
+4. Diagrammes de séquence et code
+
+- [] creerReseau OK, posterMessage reste à écrire
+
+5. Table de décision des tests unitaires et programmation des tests unitaires
+
+- [] à revoir 
+
+6. Table de décision des tests de validation et programmation des tests de validation
+
+- [] OK
+
+## Qualité du code
+
+1. Spotbugs
+
+- [] 1 erreur à regarder 
+
+2. Checkstyle
+
+- [] reste de nombreuses erreurs 
+
+## Application d'idiomes JAVA
+
+1. Idiome méthode `equals` et `hashCode` de la classe `Object`
+
+- [] à revoir 
+
+2. Idiome méthode `toString` de la classe `Object`
+
+- [] à faire pour message 
+
+3. Idiome des pipelines de *Streams*
+
+- OK
+
+4. Idiome de gestion des références `null` avec `Optional`
+
+- /

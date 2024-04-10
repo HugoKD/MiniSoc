@@ -95,18 +95,18 @@ NB : l'opération est idempotente.
 #### Poster un message (HAUTE)
 - précondition : \
 ∧ message bien formé (non null ∧ non vide)  \
-∧ l'user n'est pas bloqué \
-∧ l'user fait parti du réseau \
+∧ le membre correspond a un utilisateur actif \
+∧ le membre fait parti du réseau \
 - postcondition : \
-∧ Message soumis au processus de modération suite à une notification au modérateur ∨ directement visible si l'user est lui même modérateur
+∧ Message soumis au processus de modération suite à une notification au modérateur ∨ directement visible si le membre est lui même modérateur
 
  
  
 #### Créer un réseau social (HAUTE)
 - précondition : \
-∧ nom du réseau bien formé (non null ∧ non vide)  \
-∧ le compte existe ∧ \
-∧ le membre qui le créé non bloqué
+∧ nom du réseau, pseudoMembre, pseudoUtilisateur bien formé (non null ∧ non vide)  \
+∧ l'utilisateur existe et n'est pas bloqué ∧ \
+∧ le nom du réseau n'est pas déjà utilisé \
 - postcondition : 
 ∧ Le réseau social est créé 
 ∧ utilisateur promu modérateur 

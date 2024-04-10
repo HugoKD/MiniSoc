@@ -21,16 +21,24 @@ public class MiniSocs {
 	/**
 	 * les utilisateurs.
 	 */
-	private final Map<String, Utilisateur> utilisateurs;
+	private final Map<String, Utilisateur> utilisateurs; /**permet de stocker sous forme clé-valeur**/
+	/**
+	 * les réseaux.
+	 */
+	private final Map<String, Reseau> reseaux; /**permet de stocker sous forme clé-valeur**/
 
 	/**
 	 * construit une instance du système.
 	 * 
 	 * @param nomDuSysteme le nom.
 	 */
-	public MiniSocs(final String nomDuSysteme) {
+	public MiniSocs(final String nomDuSysteme) throws IllegalArgumentException{
+		if (nomDuSysteme==null || nomDuSysteme.isBlank()) {
+			throw new IllegalArgumentException("Le nom du systeme doit être non null et non vide");
+		}
 		this.nomDuSysteme = nomDuSysteme;
 		this.utilisateurs = new HashMap<>();
+		this.reseaux = new HashMap<>();
 	}
 
 	/**
@@ -84,6 +92,11 @@ public class MiniSocs {
 	public List<String> listerUtilisateurs() {
 		return utilisateurs.values().stream().map(Utilisateur::toString).toList();
 	}
+	
+	public List<String> listerReseaux() {
+		return reseaux.values().stream().map(Reseau::toString).toList();
+	}
+	
 
 	/**
 	 * désactiver son compte utilisateur.
@@ -119,4 +132,29 @@ public class MiniSocs {
 	public String toString() {
 		return "MiniSocs [nomDuSysteme=" + nomDuSysteme + ", utilisateurs=" + utilisateurs + "]";
 	}
+	
+	public void creerReseau(final String nomRs, final String pseudoM, final String pseudoU)/*celui qui créer un réseau est
+    automatiquement mis modérateur ! Donc dès que l'on créer un réseau on demande un pseudo*/
+			throws OperationImpossible {
+		if (pseudoM == null || pseudoM.isBlank()) {
+			throw new OperationImpossible("pseudoM ne peut pas être null ou vide");
+		}
+		if (pseudoU == null || pseudoU.isBlank()) {
+			throw new OperationImpossible("pseudoU ne peut pas être null ou vide");
+		}
+		if (nomRs == null || nomRs.isBlank()) {
+			throw new OperationImpossible("nomRs ne peut pas être null ou vide");
+		}
+		Utilisateur u = utilisateurs.get(pseudoU);
+		if (u==null) {
+			throw new OperationImpossible(pseudoU + "n'existe pas");
+		}
+		Reseau rs = reseaux.get(nomRs);
+		if (rs != null) {
+			throw new OperationImpossible(nomRs + "déjà un réseau");
+		}
+		reseaux.put(nomRs, new Reseau(nomRs, u, pseudoM));
+		assert invariant();
+	}
+	
 }

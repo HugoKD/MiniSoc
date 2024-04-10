@@ -4,9 +4,11 @@ import java.util.Objects;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
+import eu.telecomsudparis.csc4102.util.OperationImpossible;
+
 /**
  * Cette classe réalise le concept d'utilisateur du système, à ne pas confondre
- * avec le concept de participant, sous-entendu à un réséeau social.
+ * avec le concept de membre, sous-entendu à un réséeau social.
  * 
  * @author Denis Conan
  */
@@ -31,6 +33,7 @@ public class Utilisateur {
 	 * état du compte de l'utilisateur.
 	 */
 	private EtatCompte etatCompte;
+	
 
 	/**
 	 * construit un utilisateur.
@@ -41,6 +44,7 @@ public class Utilisateur {
 	 * @param courriel   l'adresse courriel de l'utilisateur.
 	 */
 	public Utilisateur(final String pseudonyme, final String nom, final String prenom, final String courriel) {
+		/**différentes exceptions (leur gestion)**/
 		if (pseudonyme == null || pseudonyme.isBlank()) {
 			throw new IllegalArgumentException("pseudonyme ne peut pas être null ou vide");
 		}
@@ -58,7 +62,7 @@ public class Utilisateur {
 		this.prenom = prenom;
 		this.courriel = courriel;
 		this.etatCompte = EtatCompte.ACTIF;
-		assert invariant();
+		assert invariant(); /**qu 'est ce que ça veut dire ?**/
 	}
 
 	/**
@@ -134,4 +138,7 @@ public class Utilisateur {
 		return "Utilisateur [pseudonyme=" + pseudonyme + ", nom=" + nom + ", prenom=" + prenom + ", courriel="
 				+ courriel + ", etatCompte=" + etatCompte + "]";
 	}
+	
+	
+
 }

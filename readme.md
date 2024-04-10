@@ -1,8 +1,8 @@
 # Gestion de mini réseaux sociaux MiniSocs
 
 Binôme :
-* Prénom1 NOM1
-* Prénom2 NOM2
+* Hugo Cadet
+* Alex Aïdan
 
 ## Syntaxe MarkDown
 
@@ -42,6 +42,8 @@ d'utilisation les plus importants (code
 [source](./Diagrammes/minisocs_uml_diag_cas_utilisation.pu)).
 
 ![diagrammecasutilisation](./Diagrammes/minisocs_uml_diag_cas_utilisation.svg)
+
+ajouter diagrammes pdf 
 
 ### 1.2. Priorités, préconditions et postconditions des cas d'utilisation
 
@@ -90,6 +92,36 @@ priorité HAUTE.
 
 NB : l'opération est idempotente.
 
+#### Poster un message (HAUTE)
+- précondition : \
+∧ message bien formé (non null ∧ non vide)  \
+∧ le membre correspond a un utilisateur actif \
+∧ le membre fait parti du réseau \
+- postcondition : \
+∧ Message soumis au processus de modération suite à une notification au modérateur ∨ directement visible si le membre est lui même modérateur
+
+ 
+ 
+#### Créer un réseau social (HAUTE)
+- précondition : \
+∧ nom du réseau, pseudoMembre, pseudoUtilisateur bien formé (non null ∧ non vide)  \
+∧ l'utilisateur existe et n'est pas bloqué ∧ \
+∧ le nom du réseau n'est pas déjà utilisé \
+- postcondition : 
+∧ Le réseau social est créé 
+∧ utilisateur promu modérateur 
+
+
+#### Ajouter une membre à un réseau social (HAUTE)
+- précondition : \
+∧ pseudo bien formé (non null ∧ non vide) \
+∧ le compte n'est pas bloqué \
+∧ le réseau existe
+∧ le membre qui ajoute à les droits (modérateur ∧ non bloqué)
+∧ choix du système de notification correct (immédiate ∨ quotidienne ∨ sans notification)
+- postcondition : membre ajouté au r.s.
+
+
 #### Autres cas d'utilisation et leur priorité respective
 
 - Retirer un utilisateur (basse)
@@ -98,13 +130,23 @@ NB : l'opération est idempotente.
 
 - Lister les utilisateurs (moyenne)
 
+- Lister les réseaux sociaux (moyenne)
+
+- configurer profil (moyenne)
+
+- Promotion modérateur (moyenne)
+
+- Fermer réseau social (basse)
+
+
+
 ## 2. Préparation des tests de validation des cas d'utilisation
 
 #### Ajouter un utilisateur (HAUTE)
 
 |                                                     | 1 | 2 | 3 | 4 | 5 | 6 |
 |:----------------------------------------------------|:--|:--|:--|---|---|---|
-| pseudo bien formé (non null ∧ non vide)              | F | T | T | T | T | T |
+| pseudo bien formé (non null ∧ non vide)             | F | T | T | T | T | T |
 | nom bien formé  (non null ∧ non vide)               |   | F | T | T | T | T |
 | prénom bien formé  (non null ∧ non vide)            |   |   | F | T | T | T |
 | courriel bien formé (respectant le standard RFC822) |   |   |   | F | T | T |
@@ -124,13 +166,57 @@ conditions.
 
 |                                          | 1 | 2 | 3 | 4 |
 |:-----------------------------------------|:--|:--|:--|:--|
-| pseudo bien formé (non null ∧ non vide)   | F | T | T | T |
+| pseudo bien formé (non null ∧ non vide)  | F | T | T | T |
 | le compte n'est pas bloqué               |   | F | T | T |
 | utilisateur avec ce pseudo existant      |   |   | F | T |
 |                                          |   |   |   |   |
 | le compte de l'utilisateur est désactivé | F | F | F | T |
 |                                          |   |   |   |   |
 | nombre de tests dans le jeu de tests     | 2 | 1 | 1 | 1 |
+
+
+#### Créer un réseau social (HAUTE)
+
+|                                                     | 1 | 2 | 3 | 4 | 5 |
+|:----------------------------------------------------|:--|:--|:--|---|---|
+| nom du réseau bien formé (non null ∧ non vide)      | F | T | T | T | T |
+| le compte existe                                    |   | F | T | T | T |
+| le membre qui le créé non bloqué                    |   |   | F | T | T |
+|                                                     |   |   |   |   |   |
+| Réseau créé                                         | F | F | F | F | T |
+| User promu modérateur                               | F | F | F | F | T |
+|                                                     |   |   |   |   |   |
+| nombre de tests dans le jeu de tests                | 2 | 1 | 1 | 1 | 1 |
+
+
+#### Poster un message (HAUTE)
+
+|                                                     | 1 | 2 | 3 | 4 | 5 |
+|:----------------------------------------------------|:--|:--|:--|---|---|
+| Message bien formé (respectant le standard RFC822)  | F | T | T | T | T |
+| L’user n’est pas bloqué                             |   | F | T | T | T |
+| L'user fait parti du réseau                         |   |   | F | T | T |
+|                                                     |   |   |   |   |   |
+| Message soumis au processus de modération suite à   |   |   |   |   |   |
+| une notification au modérateur ∨                    | F | F | F | F | T |
+| directement visible si l'user est                   |   |   |   |   |   |
+| lui même modérateur                                 |   |   |   |   |   |
+|                                                     |   |   |   |   |   |
+| nombre de tests dans le jeu de tests                | 1 | 1 | 1 | 1 | 1 |
+
+#### Ajouter un membre à un réseau social (HAUTE)
+
+|                                                     | 1 | 2 | 3 | 4 | 5 | 6 | 7 |
+|:----------------------------------------------------|:--|:--|:--|---|---|---|---|
+| pseudo bien formé (non null ∧ non vide)             | F | T | T | T | T | T | T |
+| le compte n'est pas bloqué                          |   | F | T | T | T | T | T |
+| le réseau existe                                    |   |   | F | T | T | T | T |
+| le membre qui ajoute à les droits                   |   |   |   | F | T | T | T |
+| choix du système de notification correct            |   |   |   |   | F | T | T |
+|                                                     |   |   |   |   |   | F | T |
+| membre ajouté au r.s                                | F | F | F | F | F | T | T |
+|                                                     |   |   |   |   |   |   |   |
+| nombre de tests dans le jeu de tests                | 2 | 2 | 2 | 1 | 1 | 1 | 1 |
 
 # 3. Conception
 
@@ -198,6 +284,17 @@ Version simplifiée
 
 ![diagrammeséquenceajouterutilisateursimplifié](./Diagrammes/minisocs_uml_diag_seq_ajouter_utilisateur_version_simplifiee.svg)
 
+#### Créer un nouveau réseau
+([source](./Diagrammes/minisocs_uml_diag_creer_reseau.pu)).
+
+![diagrammeséquenceajouterutilisateursimplifié](./Diagrammes/minisocs_uml_diag_creer_reseau.svg)
+
+#### Poster un message
+([source](./Diagrammes/minisocs_uml_diag_poster_mess.pu)).
+
+![diagrammeséquenceajouterutilisateursimplifié](./Diagrammes/minisocs_uml_diag_poster_mess.svg
+)
+
 # 7. Diagrammes de machine à états et invariants
 
 Dans les diagrammes de machine à états, nous faisons le choix de faire
@@ -249,7 +346,7 @@ Voici tous les attributs de la classe :
 ∧ EmailValidator.getInstance().isValid(courriel)
 ∧ etatCompte != null
 ```
-
+EtatMessage = EnAttente V valide V non valide 
 # 8 Préparation des tests unitaires
 
 ## 8.1. Opérations de la classe Utilisateur
@@ -289,6 +386,37 @@ enfin une chaîne de caractères qui n'est pas une adresse courriel.
 | nombre de tests dans le jeu de tests | 1   | 2   |
 
 Deux tests dans le jeu de tests 2 pour l'idempotence.
+
+## 8.2. Opérations de la classe Message
+
+### Opération constructeur
+
+|                                              | 1   | 2   | 3   | 4   | 5   |
+|:---------------------------------------------|:----|:----|:----|:----|:----|
+| Contenu bien formé (non vide)                |  F  |  T  | T   | T   | T   |
+| Date publication bien formée (non vide)      |     |  F  | T   | T   | T   |
+| Statut bien défini (non vide)                |     |     | F   | T   | T   |
+|                                              |     |     |     |     |     |
+| contenu' = contenu                           | F   | F   | F   | F   | T   |
+| datePublication' = datePublication           | F   | F   | F   | F   | T   |
+| statu' = statu                               | F   | F   | F   | F   | T   |
+|                                              |     |     |     |     |     |
+| levée d'un exception                         | oui | oui | oui | non | non |
+|                                              |     |     |     |     |     |
+| nombre de tests dans le jeu de tests         | 1   | 2   | 2   | 1   | 1   |
+
+### Opération moderer()
+
+|                                                 | 1   | 2   |
+|:------------------------------------------------|:----|:----|
+| statut intial du message (message modéré ou non)| F   | T   |
+|                                                 |     |     |
+| staut après la modération                       | F   | T   |
+|                                                 |     |     |
+| levée d'une exception (si nécessaure)           | oui | non |
+|                                                 |     |     |
+| nombre de tests dans le jeu de tests            | 1   | 1   |
+
 
 ---
 FIN DU DOCUMENT

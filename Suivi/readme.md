@@ -1,3 +1,7 @@
+Binôme :
+* Hugo Cadet
+* Alex Aïdan
+
 Ce fichier contient et contiendra des remarques de suivi sur votre
 projet tant sur la modélisation que sur la programmation. Un nouveau
 suivi est indiqué par une nouvelle section datée.
@@ -14,3 +18,220 @@ exposer votre point de vue.
 - [x] Action (réalisée)
     - RÉPONSE et éventuelles remarques de votre part, 
 
+ ---
+# Suivi du mar. 13 févr. 2024 14:07:37
+Chantal Taconet
+
+Les fichiers auxquels j'ai accès dans la branche develop n'ont pas été modifié  depuis le fork initial ... cela ne me permet pas de faire le suivi ... 
+
+# Suivi du mar. 05 mars 2024 
+Chantal Taconet
+
+
+Le travail est à compléter sans trop tarder. 
+Les diagrammes de séquence sont à revoir. 
+Bonne continuation ! 
+
+* [x] GIT-06-Répartition-travail-sur-dépôt
+    * Nous attendons que les deux membres du binôme soient à l'aise
+      avec Git et nous encourageons chaque membre à faire des mises à
+      jour sur le dépôt (`commit`/`push`).
+
+
+## Nouveaux retours rapides : Spécification et préparation des tests de validation
+
+
+### Diagrammes de cas d'utilisation
+Pourquoi l'administrateur n'a pas le rôle de modérateur ? 
+
+### Préconditions et postconditions
+Manque des données en entrée 
+### Tables de décision des tests de validation
+à mettre à jour, lorsque vous aurez mis à jour les pré conditions 
+
+## 3. Conception
+
+### Diagramme de classes
+
+- [] Envisager des compositions depuis la classe qui crée les instances 
+ [] DIAGCLAS-27-Association-role-et-nom-association
+    * Il est important de distinguer les noms d'association des noms
+      de rôle. Le nom d'association est positionné au milieu d'un lien
+      d'association. Un nom de rôle est positionné à un bout de
+      l'association, il permet de donner à une classe un rôle dans
+      l'association. Cela peut être intéressant lorsque plusieurs
+      associations existent entre deux classes. Par exemple, si une
+      classe Client possède 2 adresses, nous pouvons avoir deux
+      associations nommées "habite" et "a pour adresse de facturation"
+      et on pourra distinguer deux rôles dans les adresses
+      "adresseDeLivraison" et "adresseDeFacturation".
+      - [] Manque des noms d'associations
+
+- [x] Est-ce l'utilisateur ou le membre qui est associé avec un  message -> c'est le membre
+
+
+### Diagrammes de séquence
+
+1. Cas d'utilisation « créer un réseau social »
+- [x] u==true --> u != null 
+* [x] DIAGSEQ-16-Message-pb-cohérence-nom-participant-objet-trouvé
+    * Un ou plusieurs objets cherchés et trouvés dans la séquence
+      semblent utilisés par la suite dans la séquence. Si ce sont bien
+      les mêmes objets trouvés qui sont utilisés, le nom de la
+      référence retournée par la méthode de recherche (par exemple,
+      par le message « d = chercherDocument(code) : Document ») doit
+      être le nom du participant utilisé par la suite, ici « d ».
+      * par exemple le réseau social s'appelle rs dans la suite du diagramme de classes 
+* [x] DIAGSEQ-18-Message-pb-arguments
+    * Un ou plusieurs arguments d'un message ne sont pas corrects.
+	  * create(nomRs) d'où vient nomRs pb 
+
+	  
+- [x] 
+
+2. Cas d'utilisation « ajouter un membre à un réseau social »
+
+
+
+3. Cas d'utilisation « poster un message »
+
+- [x] manque les fragments optionnels, le teste des préconditions, à vérifier ... 
+
+- [] 
+
+### Raffinement du diagramme de classes
+
+1. Fiche de la classe « Message »
+
+
+
+### Diagramme de machine à états et invariant
+
+1. Diagramme de machine à états de la classe « Message »
+* [] DIAGMACHETATS-02-Compréhension-étude-de-cas
+    * Une ou plusieurs diagrammes de machine à états montrent un
+      erreur de compréhension de l'étude de cas.
+      * Message caché ?? 
+	  * Un message refusé est-il détruit ? 
+    -REPONSE : oui
+* [] DIAGMACHETATS-07-Transition-pb-syntaxe-événement-condition-action
+    * Une ou plusieurs transitions ne respectent pas la
+      syntaxe : `événement[condition]/action`.
+
+
+2. Invariant de la classe « Message »
+
+- [] A faire 
+
+## 4. Préparation des tests unitaires
+
+1. Table de décision des tests unitaires de la méthode Message::constructeur
+
+- [] A faire 
+
+2. Table de décision des tests unitaires de la méthode Message::modérer
+
+- [] A faire 
+ 
+---
+# Suivi du mar. 19 mars 2024 16:08:38
+Chantal Taconet
+
+Travail en cours ... mais en retard pour ce qui est évalué dans le suivi 3, il m'est difficile de vous faire des retours, vous est-il possible d'avancer prochainement ? 
+
+- [] GEN-03-Images-PlantUML-non-mises-à-jour
+  - vos diagrammes de séquences sont semble-til maj mais ils ne sont pas insérés dans votre readme.md, je ne peux pas vous faire de retour ...
+- [x] GEN-01-Indiquer-remarque-prise-en-compte
+  - Veuillez indiquer lorsque vous avez pris en compte les remarques en mettant un « x » dans la case à cocher, comme indiqué en début de fichier
+  
+## Programmation du logiciel
+
+### Utilisation des outils de programmation
+
+1. Module Maven et tests avec JUnit
+- maven OK 
+- Junit il semble que vous n'ayez pas encore ajouté de tests 
+
+### Programmation de la solution
+
+#### Classes du diagramme de classes avec leurs attributs
+
+- Un bon début
+
+#### Méthodes des cas d'utilisation de base
+
+- pas encore programmés
+
+#### Cohérence entre le code et le modèle
+
+- A vérifier quand les premiers cas d'utilisation seront réalisés
+
+
+## Programmation et exécution des tests
+
+- pas encore programmés
+ 
+---
+# Suivi du mar. 02 avril 2024 13:26:40
+Chantal Taconet
+ 
+De bonnes choses et d'autres à compléter. Voir les remarques ci-dessous. Bonne continuation. 
+
+## Cohérence entre le code et le modèle
+
+1. Préconditions, postconditions et diagrammes de séquence
+
+- [] creerReseauSocial manque préconditions non null et non vide, manque précondition réseau non existant 
+- [] posterMessage manque préconditions non null et non vide et d'autres préconditions mentionnées dans votre table de décision
+
+2. Diagrammes de classes et de séquence
+
+- [] Attention c'est le réseau qui crée le membre et non l'utilisateur comme mentionné dans le diagramme de classes 
+
+
+3. Diagrammes de classes et code
+
+- [] Membre --> Utilisateur existe dans le code mais pas dans le DC 
+- [] Membre --> Message existe dans le DC mais pas dans le code
+
+
+
+4. Diagrammes de séquence et code
+
+- [] creerReseau OK, posterMessage reste à écrire
+
+5. Table de décision des tests unitaires et programmation des tests unitaires
+
+- [] à revoir 
+
+6. Table de décision des tests de validation et programmation des tests de validation
+
+- [] OK
+
+## Qualité du code
+
+1. Spotbugs
+
+- [] 1 erreur à regarder 
+
+2. Checkstyle
+
+- [] reste de nombreuses erreurs 
+
+## Application d'idiomes JAVA
+
+1. Idiome méthode `equals` et `hashCode` de la classe `Object`
+
+- [] à revoir 
+
+2. Idiome méthode `toString` de la classe `Object`
+
+- [] à faire pour message 
+
+3. Idiome des pipelines de *Streams*
+
+- OK
+
+4. Idiome de gestion des références `null` avec `Optional`
+
+- /

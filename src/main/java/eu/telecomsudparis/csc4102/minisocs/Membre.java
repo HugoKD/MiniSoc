@@ -1,10 +1,13 @@
 package eu.telecomsudparis.csc4102.minisocs;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 import eu.telecomsudparis.csc4102.util.OperationImpossible;
 import java.util.Queue;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Cette classe réalise le concept de membre appartenant à un réseau.
@@ -14,7 +17,7 @@ import java.util.Queue;
 public class Membre {
 	private String pseudo ; 
 	private boolean moderateur ;
-	
+	private List<Message> messages; // representation du lien Membre --> Message
 	private final Reseau reseau;
 	private final Utilisateur utilisateur ;
 	
@@ -85,6 +88,10 @@ public class Membre {
              return Objects.equals(pseudo, other.pseudo);
      }
 	 
+	 public List<Message> getMessages() {
+		 return this.messages ;
+	 }
+	 
 	 public boolean invariant() {
 			return reseau != null && utilisateur != null;
 		}
@@ -108,7 +115,15 @@ public class Membre {
 	        rs.ajoutMembre(m);
 		}
 	 
-	 /* l obj membre est attaché à un rs donc pas besoin de vérifier qu"il appartient bien à un rs  */
+	 public boolean RFC822ValidatorWithRegex(String message) {
+		    // Expression régulière pour vérifier le format RFC 822
+		    String regex = "(^From: .+\\r?\\nTo: .+\\r?\\nSubject: .+\\r?\\n\\r?\\n.+)";
+		    Pattern pattern = Pattern.compile(regex, Pattern.DOTALL);
+		    Matcher matcher = pattern.matcher(message);
+		    return matcher.matches(); //return true if message follows the RFC822 standard
+		}
+	 
+	 /* l objet membre est attaché à un rs donc pas besoin de vérifier qu"il appartient bien à un rs  */
      public void posterMessage(String message) throws OperationImpossible {
                     if (message == null || message.isBlank()) {
                             throw new OperationImpossible("contenu non valide");
@@ -116,7 +131,11 @@ public class Membre {
                     if (this.getUtilisateur().getEtatCompte() != EtatCompte.ACTIF) {
                             throw new OperationImpossible("utilisateur non autorisé");
                     }
+                    if (RFC822ValidatorWithRegex(message)==false) {
+                        throw new OperationImpossible("Le message ne suit pas le standard RCF822");
+                    }
                     Message nouveauMessage = new Message(message, this, reseau);
+                    this.messages.add(nouveauMessage);
                     if (this.estModerateur() == true ) {
                             reseau.addListeMessage(nouveauMessage); /*message non-soumis au processus de modération*/
 

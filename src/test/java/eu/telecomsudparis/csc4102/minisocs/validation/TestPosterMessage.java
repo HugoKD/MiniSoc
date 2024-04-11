@@ -33,6 +33,7 @@ class TestPosterMessage {
         miniSocs = new MiniSocs("MiniSocs");
         utilisateur = createur.getPseudonyme(); // Utilisation du pseudo de l'utilisateur créé
         message = "Ceci est un message de test.";
+        
     }
 
     @AfterEach
@@ -47,15 +48,45 @@ class TestPosterMessage {
         Assertions.assertThrows(OperationImpossible.class,
                 () -> membrebloque.posterMessage(null));
     }
+    
+    // Test pour vérifier qu'un message non valide aux normes RFC822 ne passe pas 
+    
+    void testValidMessage() throws Exception {
+    	miniSocs.ajouterUtilisateur(utilisateur, "nom", "prenom", "test@test.com");
+        membre = new Membre("membre", reseau, createur);
+        membre.posterMessage(message);
+        String validMessage = "From: sender@example.com\n"
+                            + "To: recipient@example.com\n"
+                            + "Subject: Test Message\n"
+                            + "Date: Mon, 11 Apr 2024 12:00:00 GMT\n"
+                            + "\n"
+                            + "This is a test message.";
 
+        Assertions.assertTrue(membre.RFC822ValidatorWithRegex(validMessage));
+    }
+
+    @Test
+    void testInvalidMessage() throws Exception {
+    	miniSocs.ajouterUtilisateur(utilisateur, "nom", "prenom", "test@test.com");
+        membre = new Membre("membre", reseau, createur);
+        membre.posterMessage(message);
+        String invalidMessage = "From: sender@example.com\n"
+                              + "To: recipient@example.com\n"
+                              + "\n"
+                              + "This is a test message.";
+
+        Assertions.assertFalse(membre.RFC822ValidatorWithRegex(invalidMessage));
+    }
+
+        
     // Test pour vérifier le cas où le message est posté avec succès par un membre non modo
     @Test
     void posterMessageSuccesNonModo() throws Exception {
-        miniSocs.ajouterUtilisateur(utilisateur, "nom", "prenom", "test@test.com");
-        membre = new Membre("membre", reseau, createur);
-        membre.posterMessage(message);
+        
         // Vérification que le message est bien posté en vérifiant s'il est présent dans les messages de l'utilisateur
-        Assertions.assertTrue(reseau.listeModo.peek().getContenu().equals(message));
+        Assertions.assertTrue(reseau.listeModo.peek().getContenu().equals(message) );
+        Assertions.assertFalse(reseau.listeMessage.peek().getContenu().equals(message) );
+
     }
 
     // Test pour vérifier que le message est bien dans listeMess direct si le membre est un modérateur
@@ -67,5 +98,8 @@ class TestPosterMessage {
         modo.posterMessage(message);
         // Vérification que le message est bien posté en vérifiant s'il est présent dans les messages de l'utilisateur
         Assertions.assertTrue(reseau.listeMessage.peek().getContenu().equals(message));
+        Assertions.assertFalse(reseau.listeModo.peek().getContenu().equals(message) );
+
     }
+    
 }

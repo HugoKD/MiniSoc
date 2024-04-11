@@ -14,7 +14,7 @@ participant "__u:Utilisateur__" as u
 
 'Séquene avec les messages, les créations de participants, etc.'
 user -> m ++ : creerReseau(nomRS, pseudoU, pseudo M)
-opt nomRS,pseudoU,pseudoM non null ∧ non vide
+opt nomRS != null && nomRS !=''
 	m-> m++ : e1=rechercheReseau(nomRS)
 	m -> m ++ : u=rechercheUtilisateur(pseudoU)
 	opt e1 == null && u != null
@@ -27,6 +27,7 @@ opt nomRS,pseudoU,pseudoM non null ∧ non vide
     		rs -> "__me:Membre__" as me ++ : me=<<ajouteMembre(pseudoM)>>
     		me -> me ++ : donnerDroit()
   end
+end
 end
 
 @enduml

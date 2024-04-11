@@ -180,8 +180,9 @@ conditions.
 |                                                     | 1 | 2 | 3 | 4 | 5 |
 |:----------------------------------------------------|:--|:--|:--|---|---|
 | nom du réseau bien formé (non null ∧ non vide)      | F | T | T | T | T |
-| le compte existe                                    |   | F | T | T | T |
-| le membre qui le créé non bloqué                    |   |   | F | T | T |
+| Le réseau n'existe pas déjà                         |   | F | T | T | T |
+| le compte existe                                    |   |   | F | T | T |
+| le membre qui le créé non bloqué                    |   |   |   | F | T |
 |                                                     |   |   |   |   |   |
 | Réseau créé                                         | F | F | F | F | T |
 | User promu modérateur                               | F | F | F | F | T |
@@ -191,18 +192,18 @@ conditions.
 
 #### Poster un message (HAUTE)
 
-|                                                     | 1 | 2 | 3 | 4 | 5 |
-|:----------------------------------------------------|:--|:--|:--|---|---|
-| Message bien formé (respectant le standard RFC822)  | F | T | T | T | T |
-| L’user n’est pas bloqué                             |   | F | T | T | T |
-| L'user fait parti du réseau                         |   |   | F | T | T |
-|                                                     |   |   |   |   |   |
-| Message soumis au processus de modération suite à   |   |   |   |   |   |
-| une notification au modérateur ∨                    | F | F | F | F | T |
-| directement visible si l'user est                   |   |   |   |   |   |
-| lui même modérateur                                 |   |   |   |   |   |
-|                                                     |   |   |   |   |   |
-| nombre de tests dans le jeu de tests                | 1 | 1 | 1 | 1 | 1 |
+|                                                                | 1 | 2 | 3 | 4 | 5 |
+|:---------------------------------------------------------------|:--|:--|:--|---|---|
+| Message bien formé (respectant le standard RFC822 ∧ non vide)  | F | T | T | T | T |
+| L’user n’est pas bloqué                                        |   | F | T | T | T |
+| L'user fait parti du réseau                                    |   |   | F | T | T |
+|                                                                |   |   |   |   |   |
+| Message soumis au processus de modération suite à              |   |   |   |   |   |
+| une notification au modérateur ∨                               | F | F | F | F | T |
+| directement visible si l'user est                              |   |   |   |   |   |
+| lui même modérateur                                            |   |   |   |   |   |
+|                                                                |   |   |   |   |   |
+| nombre de tests dans le jeu de tests                           | 1 | 1 | 1 | 1 | 1 |
 
 #### Ajouter un membre à un réseau social (HAUTE)
 
@@ -403,7 +404,7 @@ Deux tests dans le jeu de tests 2 pour l'idempotence.
 |                                              |     |     |     |     |     |
 | levée d'un exception                         | oui | oui | oui | non | non |
 |                                              |     |     |     |     |     |
-| nombre de tests dans le jeu de tests         | 1   | 2   | 2   | 1   | 1   |
+| nombre de tests dans le jeu de tests         | 1   | 1   | 1   | 1   | 1   |
 
 ### Opération moderer()
 

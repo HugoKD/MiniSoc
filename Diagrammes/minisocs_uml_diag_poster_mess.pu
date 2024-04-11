@@ -16,7 +16,8 @@ participant "__u:Utilisateur__" as u
 
 'Séquence avec les messages, les créations de participants, etc.'
 user -> m ++ : posterMessage(pseudoM, rs, mess)
-opt pseudoM, rs, mess non null ∧ non vide
+
+opt mess respecte RCF822 ∧ non vide
   m -> m ++ : e1=existenceReseau(rs)
   opt e1 != null
     m -> rs ++ : e2=existenceMembre(pseudoM, rs)
@@ -33,5 +34,6 @@ opt pseudoM, rs, mess non null ∧ non vide
 	end
     end
   end    
+end
 end
 @enduml

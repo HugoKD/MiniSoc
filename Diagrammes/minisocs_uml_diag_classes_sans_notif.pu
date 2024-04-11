@@ -47,11 +47,11 @@ class Message {
 MiniSocs "1" *--> "0..*" Utilisateur : possède
 MiniSocs "0..*" *--> "1" Réseau : possède
 
-Réseau "1..*" -- "1..*" Membre: possède
+Réseau "1..*" -- "1..*" Membre: créé
 
 Membre "1" -- "0..*" Message: poste
 
-Utilisateur "1" -- "0..*" Réseau: Créé
+Utilisateur "1" --> "0..*" Réseau: Créé
 Utilisateur "1" *--> "0..*" Membre: représente
 
 'Au besoin, aides pour le positionnement'

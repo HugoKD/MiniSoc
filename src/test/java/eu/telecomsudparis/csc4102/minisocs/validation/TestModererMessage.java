@@ -62,9 +62,9 @@ class TestModererMessage {
 		rs = new Reseau("nomRs",utilisateur1,"modem");
 		membre1 = rs.listerMembres().get(0);
 		membre1.ajouterMembre(utilisateur2, "pasModem");
-		membre2 = rs.listerMembres().get(0);
+		membre2 = rs.listerMembres().get(1);
 		rs2 = new Reseau("nomRs2",utilisateur2,"modem");
-		membre3 = rs2.listerMembres().get(0);
+		membre3 = rs2.listerMembres().get(2);
 		message = new Message("From: Hugo \nTO: Alex \nSubject: subject \n\nMessage", membre2, rs);
 	}
 
@@ -84,12 +84,12 @@ class TestModererMessage {
 	@Test
 	void modererMessageTest1Jeu1() throws Exception {
 		Assertions.assertThrows(OperationImpossible.class,
-				() -> membre1.modererMessage(null,1)); //1 parce que 
+				() -> membre1.modererMessage(null,1)); 
 	}
 	@Test
 	void modererMessageTest2Jeu1() throws Exception {
 		Assertions.assertThrows(OperationImpossible.class,
-				() -> membre3.modererMessage(message,1));
+				() -> membre3.modererMessage(message,1)); //1 parce qu'on veut rendre visible message 
 	}
 	@Test
 	void modererMessageTest3Jeu1() throws Exception {
@@ -107,7 +107,20 @@ class TestModererMessage {
 	void modererMessageTest5() throws Exception {
 		membre1.modererMessage(message,1);
 		Assertions.assertTrue(message.estVisible());
+		Assertions.assertTrue(rs.listeMessages.contains(message));
+		Assertions.assertFalse(rs.listeModo.contains(message));
 		Assertions.assertThrows(OperationImpossible.class,
 				() -> membre1.modererMessage(message,1));
+	}
+	
+	@Test
+	void modererMessageTest7() throws Exception {
+		membre1.modererMessage(message,0);
+		Assertions.assertFalse(message.estVisible());
+		Assertions.assertFalse(rs.listeMessages.contains(message));
+		Assertions.assertFalse(rs.listeModo.contains(message));
+		Assertions.assertThrows(OperationImpossible.class,
+				() -> membre1.modererMessage(message,0)); //déjà supp
+
 	}
 }

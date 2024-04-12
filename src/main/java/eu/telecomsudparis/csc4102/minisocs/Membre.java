@@ -269,6 +269,9 @@ public class Membre {
 	                 break;
 	             }
 	         }
+	         if (messageToMakeVisible == null) { // message non trouvé donc ne peut pas être supp
+	        	 throw new OperationImpossible("Le message n'existe pas");
+	         }
 	         message.rendreinvisble();
 	         this.reseau.listeMessages.remove(message);
          }

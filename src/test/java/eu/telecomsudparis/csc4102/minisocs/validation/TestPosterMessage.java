@@ -85,13 +85,7 @@ class TestPosterMessage {
     	miniSocs.ajouterUtilisateur(utilisateur, "nom", "prenom", "test@test.com");
         membre = new Membre("membre", reseau, createur);
         membre.posterMessage(message);
-        String validMessage = "From: sender@example.com \n"
-                            + "To: recipient@example.com \n"
-                            + "Subject: Test Message \n"
-                            + "Date: Mon, 11 Apr 2024 12:00:00 GMT \n"
-                            + "\n"
-                            + "This is a test message.";
-
+        String validMessage = "From: Hugo \nTo: Alex \nSubject: subject \n\nMessage";
         Assertions.assertTrue(membre.validatorWithRegexRFC822(validMessage));
     }
 
@@ -100,11 +94,7 @@ class TestPosterMessage {
     	miniSocs.ajouterUtilisateur(utilisateur, "nom", "prenom", "test@test.com");
         membre = new Membre("membre", reseau, createur);
         membre.posterMessage(message);
-        String invalidMessage = "From: sender@example.com\n"
-                              + "To: recipient@example.com\n"
-                              + "\n"
-                              + "This is a test message.";
-
+        String invalidMessage = "From: Hugo \nTO: \nSubject: subject \n\nMessage";
         Assertions.assertFalse(membre.validatorWithRegexRFC822(invalidMessage));
     }
 

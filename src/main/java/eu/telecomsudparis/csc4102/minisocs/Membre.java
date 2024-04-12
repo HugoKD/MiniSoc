@@ -190,10 +190,10 @@ public class Membre {
 	  */
 	 public boolean validatorWithRegexRFC822(final String message) {
 		    // Expression régulière pour vérifier le format RFC 822
-		    String regex = "(From: .+\\r?\\nTo: .+\\r?\\nSubject: .+\\r?\\n\\r?\\n.+)";
-		    Pattern pattern = Pattern.compile(regex, Pattern.DOTALL);
+		    Pattern pattern = Pattern.compile("(From: .+\nTo: .+\\r?\\nSubject: .+\\r?\\n\\r?\\n.+)", Pattern.DOTALL);
 		    Matcher matcher = pattern.matcher(message);
-		    return matcher.matches(); //return true if message follows the RFC822 standard
+		    boolean matchFound = matcher.find();
+		    return matchFound; //return true if message follows the RFC822 standard
 		}
 	 
 	 /* l objet membre est attaché à un rs donc pas besoin de vérifier qu'il appartient bien à un rs  */
@@ -215,6 +215,7 @@ public class Membre {
                     this.messages.add(nouveauMessage);
                     if (this.estModerateur()) {
                             reseau.addListeMessage(nouveauMessage); /*message non-soumis au processus de modération*/
+                            nouveauMessage.rendreVisible(); //l'attribut visible est mis à true
                     } else {
                             reseau.addListeModo(nouveauMessage); /*message soumis au processus de modération -> Queue*/
                     }                  
@@ -224,7 +225,7 @@ public class Membre {
 	  *Cette méthode permet à un membre de modérer un message sur le réseau.
 	  *@param message  le message à modérer
 	  */
-     public void modererMessage(final Message message) throws OperationImpossible {
+     public void modererMessage(final Message message, int operation) throws OperationImpossible {  //0 : supp message 1 : rendre non visible
          if (message == null /*|| message.invariant()*/) {
                  throw new OperationImpossible("message non valide");
          }
@@ -234,9 +235,43 @@ public class Membre {
          if (!this.estModerateur()) {
              throw new OperationImpossible("Vous n'êtes pas modérateur");
          }
-         if (message.estVisible()) {
-             throw new OperationImpossible("Le message est déjà visible");
+         if (operation == 1) { //on veut rendre visible message 
+	         if (message.estVisible()) {
+	             throw new OperationImpossible("Le message est déjà visible");
+	         }
+	         Message messageToMakeVisible = null;
+	        
+	         // Parcours de la listeModo pour trouver le message  spécifié
+	         for (Message mess: this.reseau.listeModo) { 
+	             if (mess.getContenu().startsWith(message.getContenu())) {
+	            	 messageToMakeVisible = mess;
+	                 break;
+	             }
+	         }
+	         if (messageToMakeVisible == null) { // message non trouvé 
+	        	 throw new OperationImpossible("Le message n'existe pas");
+	         }
+	         this.reseau.listeModo.remove(messageToMakeVisible); //on enlève le message de la liste de message à modérer 
+	         this.reseau.listeMessages.add(messageToMakeVisible); //on ajoute le message dans la liste de message du réseau
+	         message.rendreVisible();
+	         
          }
-         message.rendreVisible();                 
-}
+         if (operation == 0) { //on veut supprimer message
+        	 if (!message.estVisible()) {
+	             throw new OperationImpossible("Le message est déjà visible");
+	         }
+        	 Message messageToMakeVisible = null;
+ 	        
+	         // Parcours de la listeMessage pour trouver le message  spécifié
+	         for (Message mess: this.reseau.listeMessages) { 
+	             if (mess.getContenu().startsWith(message.getContenu())) {
+	            	 messageToMakeVisible = mess;
+	                 break;
+	             }
+	         }
+	         message.rendreinvisble();
+	         this.reseau.listeMessages.remove(message);
+         }
+                       
+     }
 }

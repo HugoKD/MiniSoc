@@ -29,11 +29,11 @@ public class Reseau {
 	/**
 	 * Liste des messages à modérer.
 	 */
-	private Queue<Message> listeModo;
+	public LinkedList<Message> listeModo;
 	/**
 	 * Liste des messages déjà validés.
 	 */
-    private Queue<Message> listeMessages;
+    public LinkedList<Message> listeMessages;
     
     /**
 	 * Constructeur du reseau.

@@ -105,6 +105,12 @@ public class Message {
         return visible;
     }
     /**
+	 * methode permettant de rendre visible le message (mettre l'attribut à false).
+	 */
+    public void rendreinvisble() {
+        this.visible = false;
+    }
+    /**
 	 * methode permettant de rendre visible le message (mettre l'attribut à true).
 	 */
     public void rendreVisible() {

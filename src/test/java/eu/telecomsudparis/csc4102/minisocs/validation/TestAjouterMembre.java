@@ -16,13 +16,33 @@ import eu.telecomsudparis.csc4102.util.OperationImpossible;
 import eu.telecomsudparis.csc4102.minisocs.Utilisateur ;
 
 class TestAjouterMembre {
+	/**
+	 * interface pour nos tests.
+	 */
 	private MiniSocs miniSocs;
+	/**
+	 * utilisateur qui va créer le reseau.
+	 */
 	private Utilisateur utilisateur1 ; 
+	/**
+	 * utilisateur que l'on va ajouter au reseau.
+	 */
 	private Utilisateur utilisateur2 ;
-	private Membre membre1 ;
+	/**
+	 * reseau créé par l'utilisateur1.
+	 */
 	private Reseau rs;
+	/**
+	 * membre correspondant à l'utilisateur1 dans le réseau rs.
+	 */
+	private Membre membre1 ;
+	/**
+	 * pseudo de membre de l'utilisateur2 dans rs.
+	 */
 	private String pseudoM;
-	private String pseudoU;
+	/**
+	 * nom du réseau que l'on va créer.
+	 */
 	private String nomRs;
 	
 

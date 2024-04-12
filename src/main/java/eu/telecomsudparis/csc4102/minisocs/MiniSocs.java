@@ -20,20 +20,21 @@ public class MiniSocs {
 	private final String nomDuSysteme;
 	/**
 	 * les utilisateurs.
+	 * permet de stocker sous forme clé-valeur
 	 */
-	private final Map<String, Utilisateur> utilisateurs; /**permet de stocker sous forme clé-valeur**/
+	private final Map<String, Utilisateur> utilisateurs; 
 	/**
 	 * les réseaux.
+	 * permet de stocker sous forme clé-valeur
 	 */
-	private final Map<String, Reseau> reseaux; /**permet de stocker sous forme clé-valeur**/
-
+	private final Map<String, Reseau> reseaux;
 	/**
 	 * construit une instance du système.
 	 * 
 	 * @param nomDuSysteme le nom.
 	 */
-	public MiniSocs(final String nomDuSysteme) throws IllegalArgumentException{
-		if (nomDuSysteme==null || nomDuSysteme.isBlank()) {
+	public MiniSocs(final String nomDuSysteme) throws IllegalArgumentException {
+		if (nomDuSysteme == null || nomDuSysteme.isBlank()) {
 			throw new IllegalArgumentException("Le nom du systeme doit être non null et non vide");
 		}
 		this.nomDuSysteme = nomDuSysteme;
@@ -92,7 +93,11 @@ public class MiniSocs {
 	public List<String> listerUtilisateurs() {
 		return utilisateurs.values().stream().map(Utilisateur::toString).toList();
 	}
-	
+	/**
+	 * liste les reseaux.
+	 * 
+	 * @return la liste des versions string des réseaux.
+	 */
 	public List<String> listerReseaux() {
 		return reseaux.values().stream().map(Reseau::toString).toList();
 	}
@@ -133,6 +138,13 @@ public class MiniSocs {
 		return "MiniSocs [nomDuSysteme=" + nomDuSysteme + ", utilisateurs=" + utilisateurs + "]";
 	}
 	
+	/**
+	 * Methode pour creer un reseau.
+	 * 
+	 * @param nomRs   le nom du reseau que l'on veut creer
+	 * @param pseudoM le pseudo que le créateur du reseau veut adopter en tant que membre
+	 * @param pseudoU le pseudo de l'utilisateur qui veut créer le reseau
+	 */
 	public void creerReseau(final String nomRs, final String pseudoM, final String pseudoU)/*celui qui créer un réseau est
     automatiquement mis modérateur ! Donc dès que l'on créer un réseau on demande un pseudo*/
 			throws OperationImpossible {
@@ -146,7 +158,7 @@ public class MiniSocs {
 			throw new OperationImpossible("nomRs ne peut pas être null ou vide");
 		}
 		Utilisateur u = utilisateurs.get(pseudoU);
-		if (u==null) {
+		if (u == null) {
 			throw new OperationImpossible(pseudoU + "n'existe pas");
 		}
 		Reseau rs = reseaux.get(nomRs);

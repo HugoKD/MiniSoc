@@ -11,9 +11,21 @@ import eu.telecomsudparis.csc4102.minisocs.MiniSocs;
 import eu.telecomsudparis.csc4102.util.OperationImpossible;
 
 class TestCreerReseau {
+	/**
+	 * interface pour nos tests.
+	 */
 	private MiniSocs miniSocs;
-	private String pseudoM;
+	/**
+	 * pseudo de l'utilisateur qui va créerle reseau.
+	 */
 	private String pseudoU;
+	/**
+	 * pseudo membre de l'utilisateur ci-dessus, une fois le réseau créer.
+	 */
+	private String pseudoM;
+	/**
+	 * nom du réseau à créer.
+	 */
 	private String nomRs;
 	
 

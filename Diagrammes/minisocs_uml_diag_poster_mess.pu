@@ -8,14 +8,14 @@ skinparam sequenceParticipantBackgroundColor White
 skinparam sequenceActorBackgroundColor White
 
 'Déclaration des acteurs et des participants (déjà existants avant la séquence)'
-actor "__Utilisateur__" as user
+actor "__Membre__" as member
 participant "__m:MiniSocs__" as m
 participant "__rs:Reseau__" as rs
 participant "__me:Membre__" as me
 participant "__u:Utilisateur__" as u
 
 'Séquence avec les messages, les créations de participants, etc.'
-user -> m ++ : posterMessage(pseudoM, rs, mess)
+member -> m ++ : posterMessage(pseudoM, rs, mess)
 
 opt mess respecte RCF822 ∧ non vide
   m -> m ++ : e1=existenceReseau(rs)

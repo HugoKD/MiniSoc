@@ -28,19 +28,23 @@ enum ÉtatCompte <<enum>> {
   DÉSACTIVÉ
   BLOQUÉ
 }
+
 class Réseau {
-  createur : String 
-  nom: String
-  ouvert: Bool
+  createur : Utilisateur 
+  nomDuReseau : String
+  listeModo : Queue<Message>
+  listeMessages : Queue<Message>
 }
 
 class Membre {
+  pseudo: String
   moderateur: Bool
-  pseudo_rs: String
 }
+
 class Message {
   contenu: String
   visible: Bool
+  horaire: String
 }
 
 'Associations, etc.'

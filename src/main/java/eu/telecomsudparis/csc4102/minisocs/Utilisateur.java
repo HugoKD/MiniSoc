@@ -4,7 +4,6 @@ import java.util.Objects;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
-import eu.telecomsudparis.csc4102.util.OperationImpossible;
 
 /**
  * Cette classe réalise le concept d'utilisateur du système, à ne pas confondre
@@ -44,7 +43,7 @@ public class Utilisateur {
 	 * @param courriel   l'adresse courriel de l'utilisateur.
 	 */
 	public Utilisateur(final String pseudonyme, final String nom, final String prenom, final String courriel) {
-		/**différentes exceptions (leur gestion)**/
+		//gestion des exceptions
 		if (pseudonyme == null || pseudonyme.isBlank()) {
 			throw new IllegalArgumentException("pseudonyme ne peut pas être null ou vide");
 		}
@@ -62,7 +61,7 @@ public class Utilisateur {
 		this.prenom = prenom;
 		this.courriel = courriel;
 		this.etatCompte = EtatCompte.ACTIF;
-		assert invariant(); /**qu 'est ce que ça veut dire ?**/
+		assert invariant(); 
 	}
 
 	/**

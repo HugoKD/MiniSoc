@@ -108,12 +108,12 @@ Manque des données en entrée
 ### Diagramme de machine à états et invariant
 
 1. Diagramme de machine à états de la classe « Message »
-* [] DIAGMACHETATS-02-Compréhension-étude-de-cas
+* [x] DIAGMACHETATS-02-Compréhension-étude-de-cas
     * Une ou plusieurs diagrammes de machine à états montrent un
       erreur de compréhension de l'étude de cas.
       * Message caché ?? 
 	  * Un message refusé est-il détruit ? 
-    -REPONSE : oui
+    -REPONSE : un message caché est, pour nous, un message non modéré. Un message refusé est en effet détruit.
 * [] DIAGMACHETATS-07-Transition-pb-syntaxe-événement-condition-action
     * Une ou plusieurs transitions ne respectent pas la
       syntaxe : `événement[condition]/action`.
@@ -121,7 +121,7 @@ Manque des données en entrée
 
 2. Invariant de la classe « Message »
 
-- [] A faire 
+- [x] A faire 
 
 ## 4. Préparation des tests unitaires
 
@@ -131,7 +131,7 @@ Manque des données en entrée
 
 2. Table de décision des tests unitaires de la méthode Message::modérer
 
-- [] A faire 
+- [x] A faire 
  
 ---
 # Suivi du mar. 19 mars 2024 16:08:38
@@ -181,8 +181,8 @@ De bonnes choses et d'autres à compléter. Voir les remarques ci-dessous. Bonne
 
 1. Préconditions, postconditions et diagrammes de séquence
 
-- [] creerReseauSocial manque préconditions non null et non vide, manque précondition réseau non existant 
-- [] posterMessage manque préconditions non null et non vide et d'autres préconditions mentionnées dans votre table de décision
+- [x] creerReseauSocial manque préconditions non null et non vide, manque précondition réseau non existant 
+- [x] posterMessage manque préconditions non null et non vide et d'autres préconditions mentionnées dans votre table de décision
 
 2. Diagrammes de classes et de séquence
 
@@ -191,14 +191,14 @@ De bonnes choses et d'autres à compléter. Voir les remarques ci-dessous. Bonne
 
 3. Diagrammes de classes et code
 
-- [] Membre --> Utilisateur existe dans le code mais pas dans le DC 
-- [] Membre --> Message existe dans le DC mais pas dans le code
+- [x] Membre --> Utilisateur existe dans le code mais pas dans le DC 
+- [x] Membre --> Message existe dans le DC mais pas dans le code
 
 
 
 4. Diagrammes de séquence et code
 
-- [] creerReseau OK, posterMessage reste à écrire
+- [x] creerReseau OK, posterMessage reste à écrire
 
 5. Table de décision des tests unitaires et programmation des tests unitaires
 
@@ -206,27 +206,27 @@ De bonnes choses et d'autres à compléter. Voir les remarques ci-dessous. Bonne
 
 6. Table de décision des tests de validation et programmation des tests de validation
 
-- [] OK
+- [x] OK
 
 ## Qualité du code
 
 1. Spotbugs
 
-- [] 1 erreur à regarder 
+- [x] 1 erreur à regarder 
 
 2. Checkstyle
 
-- [] reste de nombreuses erreurs 
+- [x] reste de nombreuses erreurs 
 
 ## Application d'idiomes JAVA
 
 1. Idiome méthode `equals` et `hashCode` de la classe `Object`
 
-- [] à revoir 
+- [x] à revoir 
 
 2. Idiome méthode `toString` de la classe `Object`
 
-- [] à faire pour message 
+- [x] à faire pour message 
 
 3. Idiome des pipelines de *Streams*
 

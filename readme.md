@@ -121,6 +121,14 @@ NB : l'opération est idempotente.
 ∧ choix du système de notification correct (immédiate ∨ quotidienne ∨ sans notification)
 - postcondition : membre ajouté au r.s.
 
+#### Modérer un message (HAUTE)
+- précondition : \
+∧ message existe et est bien formé (non null ∧ non vide) \
+∧ le reseau du message existe et est similaire à celui du membre \
+∧ le membre existe et est modérateur \
+∧ message non encore visible \
+- postcondition : \
+∧ message visible \
 
 #### Autres cas d'utilisation et leur priorité respective
 
@@ -218,6 +226,20 @@ conditions.
 | membre ajouté au r.s                                | F | F | F | F | F | T | T |
 |                                                     |   |   |   |   |   |   |   |
 | nombre de tests dans le jeu de tests                | 2 | 2 | 2 | 1 | 1 | 1 | 1 |
+
+#### Ajouter un utilisateur (HAUTE)
+
+|                                                     | 1 | 2 | 3 | 4 | 5 |
+|:----------------------------------------------------|:--|:--|:--|---|---|
+| message existe et bien formé (non null ∧ non vide)  | F | T | T | T | T |
+| reseau du message existe et est cohérent avec membre|   | F | T | T | T | 
+| membre est modérateur 			           	      |   |   | F | T | T |
+| message non visible 					              |   |   |   | F | T |
+|                                                     |   |   |   |   |   |
+| message visible                                     | F | F | F | F | T |
+|                                                     |   |   |   |   |   |
+| nombre de tests dans le jeu de tests                | 3 | 2 | 1 | 1 | 1 |
+
 
 # 3. Conception
 

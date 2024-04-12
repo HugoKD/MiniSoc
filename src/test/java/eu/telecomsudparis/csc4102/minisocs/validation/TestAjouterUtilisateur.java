@@ -11,10 +11,25 @@ import eu.telecomsudparis.csc4102.minisocs.MiniSocs;
 import eu.telecomsudparis.csc4102.util.OperationImpossible;
 
 class TestAjouterUtilisateur {
+	/**
+	 * Interface pour nos tests.
+	 */
 	private MiniSocs miniSocs;
+	/**
+	 * pseudo de l'utilisateur que l'on souhaite ajouter.
+	 */
 	private String pseudo;
+	/**
+	 * nom de l'utilisateur que l'on souhaite ajouter.
+	 */
 	private String nom;
+	/**
+	 * prenom de l'utilisateur que l'on souhaite ajouter.
+	 */
 	private String prenom;
+	/**
+	 * courriel de l'utilisateur que l'on souhaite ajouter.
+	 */
 	private String courriel;
 
 	@BeforeEach

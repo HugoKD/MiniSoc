@@ -1,8 +1,4 @@
-# Gestion de mini réseaux sociaux MiniSocs
-
-Binôme :
-* Hugo Cadet
-* Alex Aïdan
+# Création d'un réseau social
 
 ## Syntaxe MarkDown
 

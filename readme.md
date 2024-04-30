@@ -1,4 +1,4 @@
-# Création d'un réseau social
+# Création d'un réseau social dans la cadre d'un projet scolaire
 
 ## Syntaxe MarkDown
 
